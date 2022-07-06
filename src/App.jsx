@@ -6,13 +6,10 @@ import { Container } from './components/Container';
 import { Filter } from './components/Filter';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import defaultContacts from 'data/defaultContacts.json';
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, reset, getClicks } from 'redux/clicksSlice';
+
+import { useClicks } from 'redux/clicksSlice';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const numberOfClicks = useSelector(getClicks);
-
   const CONTACTS_lS_KEY = 'savedContacts';
 
   const [contacts, setContacts] = useLocalStorage(
@@ -54,22 +51,12 @@ export const App = () => {
 
   const visibleContacts = getVisibleContacts();
 
+  const { numberOfClicks, increment, reset } = useClicks();
+
   return (
     <Container>
-      <button
-        onClick={() => {
-          dispatch(increment(5));
-        }}
-      >
-        {numberOfClicks}
-      </button>
-      <button
-        onClick={() => {
-          dispatch(reset());
-        }}
-      >
-        Reset
-      </button>
+      <button onClick={() => increment(5)}>{numberOfClicks}</button>
+      <button onClick={reset}>Reset</button>
       {/* <button>{numberOfClicks}</button> */}
       <h1>PhoneBook</h1>
       <ContactForm onSubmit={addContactHandler} />
