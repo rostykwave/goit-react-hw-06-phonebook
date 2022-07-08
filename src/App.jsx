@@ -8,8 +8,6 @@ import { useLocalStorage } from 'hooks/useLocalStorage';
 import defaultContacts from 'data/defaultContacts.json';
 import * as CONSTANTS from 'constants';
 
-import { useClicks } from 'redux/clicksSlice';
-
 export const App = () => {
   const [contacts, setContacts] = useLocalStorage(
     CONSTANTS.CONTACTS_lS_KEY,
@@ -50,13 +48,8 @@ export const App = () => {
 
   const visibleContacts = getVisibleContacts();
 
-  const { numberOfClicks, increment, reset } = useClicks();
-
   return (
     <Container>
-      <button onClick={() => increment(5)}>{numberOfClicks}</button>
-      <button onClick={reset}>Reset</button>
-      {/* <button>{numberOfClicks}</button> */}
       <h1>PhoneBook</h1>
       <ContactForm onSubmit={addContactHandler} />
 
