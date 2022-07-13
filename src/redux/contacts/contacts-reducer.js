@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import contactsActions from './contacts-actions';
+import { contactsActions } from './contacts-actions';
 import { createReducer } from '@reduxjs/toolkit';
 
 const items = createReducer([], {

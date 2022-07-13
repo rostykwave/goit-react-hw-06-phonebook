@@ -9,7 +9,7 @@ import {
 } from './ContactForm.styled';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import contactsActions from 'redux/contacts/contacts-actions';
+import { contactsActions } from 'redux/contacts/contacts-actions';
 
 const FormError = ({ name }) => {
   return (
