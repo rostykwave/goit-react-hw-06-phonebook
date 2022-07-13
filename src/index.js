@@ -4,7 +4,7 @@ import { App } from 'App';
 import './index.css';
 import { store } from 'redux/store';
 import { Provider } from 'react-redux';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contacts/contacts-actions';
 
 // console.log(store.dispatch(addContact));
 
